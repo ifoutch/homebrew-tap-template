@@ -1,0 +1,21 @@
+# Resources
+
+https://docs.brew.sh/How-to-Create-and-Maintain-a-Tap
+
+https://blog.ceejbot.com/posts/private-brew-tap/#downloading-release-assets-by-strategy
+
+https://medium.com/@havus.it/creating-homebrew-taps-from-github-repos-a-step-by-step-guide-5b6b5262ec44
+
+https://rubydoc.brew.sh/AbstractFileDownloadStrategy.html
+
+https://github.com/groda/the_ultimate_gitignore_guide
+
+# .gitignore
+
+Add patterns for `sh`, `bash`, `zsh`, and `python` as well as common macOS artifacts.
+
+# Download Strategies
+
+Is it possible to support multiple strategies?
+
+
