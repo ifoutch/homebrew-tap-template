@@ -1,7 +1,7 @@
 # Example formulas showing how to use each download strategy
 
 # 1. GitHub Private Repository (raw files)
-require_relative "../lib/github_private_repo_download_strategy"
+require_relative "../download_strategies/github_private_repo_download_strategy"
 
 class MyToolFromGithubRaw < Formula
   desc "Tool from private GitHub repository raw file"
@@ -17,7 +17,7 @@ class MyToolFromGithubRaw < Formula
 end
 
 # 2. GitHub Release Assets
-require_relative "../lib/github_release_download_strategy"
+require_relative "../download_strategies/github_release_download_strategy"
 
 class MyToolFromGithubRelease < Formula
   desc "Tool from GitHub release assets"
@@ -33,7 +33,7 @@ class MyToolFromGithubRelease < Formula
 end
 
 # 3. GitLab Private Repository
-require_relative "../lib/gitlab_private_repo_download_strategy"
+require_relative "../download_strategies/gitlab_private_repo_download_strategy"
 
 class MyToolFromGitlab < Formula
   desc "Tool from private GitLab repository"
@@ -49,7 +49,7 @@ class MyToolFromGitlab < Formula
 end
 
 # 4. GitLab Release
-require_relative "../lib/gitlab_private_repo_download_strategy"
+require_relative "../download_strategies/gitlab_private_repo_download_strategy"
 
 class MyToolFromGitlabRelease < Formula
   desc "Tool from GitLab release"
@@ -65,7 +65,7 @@ class MyToolFromGitlabRelease < Formula
 end
 
 # 5. AWS S3 Private Bucket
-require_relative "../lib/s3_download_strategy"
+require_relative "../download_strategies/s3_download_strategy"
 
 class MyToolFromS3 < Formula
   desc "Tool from AWS S3 private bucket"
@@ -81,7 +81,7 @@ class MyToolFromS3 < Formula
 end
 
 # 6. Generic Authenticated URL (Bearer Token)
-require_relative "../lib/authenticated_download_strategy"
+require_relative "../download_strategies/authenticated_download_strategy"
 
 class MyToolWithBearerAuth < Formula
   desc "Tool requiring Bearer token authentication"
@@ -98,7 +98,7 @@ class MyToolWithBearerAuth < Formula
 end
 
 # 7. Generic Authenticated URL (API Key)
-require_relative "../lib/authenticated_download_strategy"
+require_relative "../download_strategies/authenticated_download_strategy"
 
 class MyToolWithApiKey < Formula
   desc "Tool requiring API key authentication"
@@ -116,7 +116,7 @@ class MyToolWithApiKey < Formula
 end
 
 # 8. Generic Authenticated URL (Basic Auth)
-require_relative "../lib/authenticated_download_strategy"
+require_relative "../download_strategies/authenticated_download_strategy"
 
 class MyToolWithBasicAuth < Formula
   desc "Tool requiring basic authentication"
@@ -133,7 +133,7 @@ class MyToolWithBasicAuth < Formula
 end
 
 # 9. Custom Headers
-require_relative "../lib/authenticated_download_strategy"
+require_relative "../download_strategies/authenticated_download_strategy"
 
 class MyToolWithCustomHeaders < Formula
   desc "Tool requiring custom headers"

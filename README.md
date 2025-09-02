@@ -94,7 +94,7 @@ brew install yourusername/yourtap/yourformula
 See `Formula/examples.rb` for complete examples. Here's a simple GitHub private repo formula:
 
 ```ruby
-require_relative "../lib/github_private_repo_download_strategy"
+require_relative "../download_strategies/github_private_repo_download_strategy"
 
 class MyTool < Formula
   desc "My private tool"

@@ -322,7 +322,7 @@ class DownloadStrategyTester
   end
 
   def generate_formula(name, url, strategy_class, options = {})
-    lib_path = File.expand_path('../../lib', __FILE__)
+    lib_path = File.expand_path('../../download_strategies', __FILE__)
     
     strategy_file = case strategy_class
     when 'GitHubPrivateRepoDownloadStrategy'

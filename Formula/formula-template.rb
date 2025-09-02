@@ -1,4 +1,4 @@
-require_relative "../lib/github_private_repo_download_strategy"
+require_relative "../download_strategies/github_private_repo_download_strategy"
 
 class <formulae name> < Formula
   desc "<formulae description>"
