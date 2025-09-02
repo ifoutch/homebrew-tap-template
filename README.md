@@ -46,10 +46,24 @@ After creating your repository:
 Different download strategies require different environment variables:
 
 ### GitHub
-- `HOMEBREW_GITHUB_API_TOKEN` - GitHub personal access token
+
+**Option 1: Personal Access Token**
+- `HOMEBREW_GITHUB_API_TOKEN` - GitHub personal access token with `repo` scope
+
+**Option 2: GitHub CLI Authentication**
+- Authenticate with `gh auth login` - the strategies will automatically use your `gh` credentials
+- No environment variable needed if `gh` is authenticated
+
+> **Note**: SSH keys alone are not sufficient for download strategies. The strategies need API access to download raw files and release assets, which requires either a personal access token or GitHub CLI authentication. SSH keys are only used for git operations (clone, push, pull).
 
 ### GitLab
-- `HOMEBREW_GITLAB_API_TOKEN` or `GITLAB_PRIVATE_TOKEN` - GitLab personal access token
+
+**Option 1: Personal Access Token**
+- `HOMEBREW_GITLAB_API_TOKEN` or `GITLAB_PRIVATE_TOKEN` - GitLab personal access token with `api` scope
+
+**Option 2: GitLab CLI Authentication**
+- Authenticate with `glab auth login` - the strategies will automatically use your `glab` credentials
+- Also supports `GITLAB_TOKEN` environment variable that `glab` uses
 
 ### AWS S3
 - `AWS_ACCESS_KEY_ID` - AWS access key
