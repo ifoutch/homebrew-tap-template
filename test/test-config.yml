@@ -1,0 +1,109 @@
+# Test configuration for download strategy tester
+# 
+# RECOMMENDED APPROACH: Create service-specific test repositories
+# This ensures you're testing the actual authentication and API differences
+# between platforms.
+#
+# Repository naming suggestion:
+#   - homebrew-test-github (for GitHub)
+#   - homebrew-test-gitlab (for GitLab)
+#   - homebrew-test-bitbucket (for Bitbucket)
+#
+# Each test repo should contain:
+#   - A README.md file (for raw file testing)
+#   - A release with attached assets (for release testing)
+#   - A test-file.txt with known content for validation
+
+github:
+  # Create a private repo: https://github.com/yourusername/homebrew-test-github
+  # Add a test file and create a release with assets
+  raw_url: "https://raw.githubusercontent.com/yourusername/homebrew-test-github/main/test-file.txt"
+  release_url: "https://github.com/yourusername/homebrew-test-github/releases/download/v1.0.0/test-archive.tar.gz"
+  
+  # Why GitHub-specific:
+  # - Tests GitHub's token authentication format
+  # - Validates raw.githubusercontent.com access
+  # - Tests GitHub Releases API
+
+gitlab:
+  # Create a private project: https://gitlab.com/yourusername/homebrew-test-gitlab
+  # GitLab has different API endpoints and auth patterns
+  raw_url: "https://gitlab.com/yourusername/homebrew-test-gitlab/-/raw/main/test-file.txt"
+  release_url: "https://gitlab.com/yourusername/homebrew-test-gitlab/-/releases/v1.0.0/downloads/test-archive.tar.gz"
+  
+  # Why GitLab-specific:
+  # - Tests PRIVATE-TOKEN header format
+  # - Validates GitLab's unique /-/raw/ URL pattern
+  # - Tests GitLab's release link system (different from GitHub)
+  
+  # For self-hosted GitLab instances:
+  # custom_host: "gitlab.company.com"
+  # raw_url: "https://gitlab.company.com/team/homebrew-test/-/raw/main/test-file.txt"
+
+bitbucket:
+  # Create a private repo: https://bitbucket.org/yourusername/homebrew-test-bitbucket
+  # Bitbucket uses app passwords and different API structure
+  url: "https://bitbucket.org/yourusername/homebrew-test-bitbucket/raw/main/test-file.txt"
+  
+  # Why Bitbucket-specific:
+  # - Tests app password authentication
+  # - Validates Bitbucket's API v2.0 if using API URLs
+  # - Different rate limits and auth patterns
+
+s3:
+  # Option 1: Use a dedicated test bucket
+  # Create bucket: homebrew-test-bucket
+  url: "s3://homebrew-test-bucket/test-files/test-archive.tar.gz"
+  
+  # Option 2: Use a test prefix in existing bucket
+  # url: "s3://your-existing-bucket/homebrew-tests/test-archive.tar.gz"
+  
+  # Public bucket for testing S3PublicDownloadStrategy
+  public_url: "https://s3.amazonaws.com/homebrew-test-public/test-file.txt"
+  
+  # Why S3-specific:
+  # - Tests AWS signature v4 signing
+  # - Validates IAM permissions
+  # - Tests region-specific endpoints
+
+authenticated:
+  # For testing generic auth, you might use:
+  # 1. A mock API service (like httpbin.org with auth)
+  # 2. Your company's internal API
+  # 3. A test endpoint you control
+  
+  # Example using a service that accepts bearer tokens:
+  bearer_url: "https://your-api.example.com/v1/downloads/test-file.tar.gz"
+  
+  # Example using basic auth (httpbin.org can be used for testing):
+  # basic_auth_url: "https://httpbin.org/basic-auth/testuser/testpass"
+  
+  # Why service-specific:
+  # - Tests your actual authentication infrastructure
+  # - Validates real-world headers and auth patterns
+
+# Test file contents validation (optional)
+# You can add expected content for validation
+validation:
+  # Expected content in test-file.txt for verification
+  test_file_content: "Homebrew download strategy test file"
+  
+  # Expected SHA256 for test archives (optional)
+  test_archive_sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+# Alternative: Single repository approach (NOT RECOMMENDED)
+# 
+# If you prefer using a single repository mirrored across services:
+# Pros:
+#   - Easier to maintain one set of test files
+#   - Consistent test data across platforms
+# Cons:
+#   - May miss platform-specific issues
+#   - Doesn't test real authentication differences
+#   - Some features (like GitLab releases) work differently
+#
+# single_repo:
+#   repo_name: "homebrew-test-repo"
+#   github_url: "https://github.com/yourusername/homebrew-test-repo"
+#   gitlab_url: "https://gitlab.com/yourusername/homebrew-test-repo"
+#   bitbucket_url: "https://bitbucket.org/yourusername/homebrew-test-repo"
