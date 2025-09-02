@@ -3,7 +3,7 @@ class DownloadStrategyTester < Formula
   homepage "https://github.com/yourusername/homebrew-tap-template"
   url "file://#{File.expand_path("../../test/download-strategy-tester.rb", __FILE__)}"
   version "1.0.0"
-  sha256 "placeholder"
+  sha256 "301b2d0caccc3a080823b6ef1eba8dc065835152368a93ad2fe5f2ed3581c004"
 
   def install
     # Install the test script
